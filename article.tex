@@ -1,0 +1,316 @@
+\documentclass{article}
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{cool}
+
+\DeclareMathOperator{\divr}{div}
+\DeclareMathOperator{\grad}{grad}
+
+\numberwithin{equation}{section}
+
+\newtheorem{defn}{Definition}
+\newtheorem{thm}{Theorem}
+
+
+
+\title{The existence of a strong solution to the Navier-Stokes equations}
+\author{Mukhtarbay Otelbaev\\
+Institute of Mathematics and Mathematical Modeling MES
+RK\thanks{Ministry of Education and Science, Republic of Kazakhstan}\\
+125 Pushkin St, Almaty 050010, email: otelbaevm@mail.ru}
+
+
+\date{ISSN 1682-0525. Mathematical Journal. 2013. Vol 13, Num 4 (50).\\
+Translated by Mikhail Wolfson, Ph.D., \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    In this work, a solution to the sixth Millennium Prize Problem is provided:
+    the existence and uniqueness of a strong solution to the three-dimensional
+    Navier-Stokes problem with periodic spatial boundary conditions.
+
+    Key words: sixth Millennium Prize problem, Navier-Stokes equation, strong
+    solution.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{A short history of the problem}
+
+The problem of describing the dynamics of an incompressible fluid, due to its
+significance for both theory and application, has attracted the attention of
+many researchers. During the middle part of 2000, this problem was formulated
+as the \emph{sixth Millennium Prize problem}, about the existence and
+smoothness of a solution to the Navier-Stokes equations for an incompressible
+viscous fluid \cite{clay}.
+
+The solution to this problem was the subject of many works even before its
+announcement as a Millennium Prize problem. As the number of these works is
+too large, I will not include a list. Deep results, in my opinion, were
+arrived at in the works of O. A. Ladyzhenskaya \cite{lad1,lad2,lad3,lad4} and R.
+Temam \cite{tem1, tem2}. This problem has been of interest to many first-class
+mathematicians, who have been able to solve important mathematical problems,
+including problems in hydrodynamics. Substantial results have been arrived at
+in the works of such great mathematicians a A. N. Kolmogorov \cite{kol1}, 
+J. Leray \cite{ler1, ler2}, E. Hopf \cite{hop1}, J.-L. Lions \cite{lio1,
+lio2}, M. I. Vishik \cite{vis1}, V. A. Solonnikov \cite{sol1}, and many
+others. Of course, this list is far from complete. It is not my goal to provide
+a full overview of existing works. With the exception of those publications,
+whose results I have directly used in the writing of this work (cf.
+\cite{ote1,ote2,ote3,ote4,ote5,ote6,ote7,ote8,ote9,ote10,ote11,ote12,ote13,ote14,ote15,ote16,ote17,ote18,ote19,ote20,ote21,ote22,sol2,aky1,jak1,aby1,aby2,aby3,aby4,aby5,ait1}).
+My own works are included in this list, sometimes with coauthors, and so are
+the works of many other Kazakh mathematicians, whose positive influence I have
+constantly benefited from.
+
+A full solution to the two-dimensional problem is provided by O. A.
+Ladyzhenskaya in \cite{lad1}. In \cite{lad4}, she provides a sufficiently full
+analysis of the current state of the problem and an overview of existing
+literature and proposed solution methods. In part, the main problem of a
+global unique solution to the three-dimensional Navier-Stokes is cast as the
+problem of finding a special \emph{a priori} bound for all possible solutions.
+
+One must also keep in mind the existence of a large number of works containing
+mistakes or lacking proofs that have been published in little-known journals
+or merited electronic publication. Despite their  mistakes, these works
+deserve respect.
+
+I have been studying this problem since 1980. All of my works, written
+either by myself or with coauthors, published after 1982 and devoted to
+nonlinear equations, approximation techniques for solving equations and the
+final inverse problem, used ideas and technical approaches developed during my
+(and also some of my students' and coauthors') unsuccessful attempts to solve
+the problem of the strong solvability of the Navier-Stokes equation (cf.\ for
+example, 
+\cite{ote1,ote2,ote3,ote4,ote5,ote6,ote7,ote8,ote9,ote10,ote11,ote12,ote13,ote14,ote15,ote16,ote17,ote18,ote19,ote20,ote21,ote22}).
+
+I would like to take this opportunity to express my gratitude to Professor M.
+Sadybekov for his careful reading of the work. He also reworked 
+Section 4, which I had briefly outlined, and completely wrote Section 8. His
+comments proved very useful in the formulation of the final state of this
+article.
+
+I dedicate this work to the family of my dear teachers: the mathematics
+professors T. I. Amanov, M. G. Gasymov, A. G. Kostuchenko, B. M. Levitan, P.
+I. Lizorkin, and also my school teachers I. Adykeev and A. M. Panivanov.
+
+\subsection{Statement of the problem}
+Let $Q \subset R^3$ be a domain in three dimensions, $\Omega = (0,a)\times Q,
+a > 0$. In this work we examine the case when $Q$ is a three-dimensional cube
+centered at the origin and edges of length $2\pi$, parallel to the coordinate axes.
+
+The \emph{Navier-Stokes problem} consists of finding the unknowns:
+\begin{align*}
+&\text{the velocity vector } u(t,x) = (u_1(t,x), u_2(t,x), u_3(t,x)),\\
+&\text{and the pressure---a scalar function } p(t,x)
+\end{align*}
+for points $x \in Q$ at time $t \in (0, a)$ that satisfy the system of
+equations
+\begin{equation}\label{ns}
+    \left\{
+    \begin{aligned}
+        &\pderiv{u_j}{t} + \sum_{k=1}^{3} u_k \pderiv{u_j}{x_k} = \Delta u_j -
+        \pderiv{p}{x_j} + f_j, \quad (t,x) \in \Omega, \qquad j = 1,2,3;\\
+       &\divr u \equiv \sum_{k=1}^{3} = 0,\qquad (t,x) \in \Omega.
+    \end{aligned}
+    \right.
+\end{equation}
+
+Here, $f(t,x) = (f_1(t,x), f_2(t,x), f_3(t,x))$ is an external force, and 
+$\Delta = \sum_{k=1}^{3} \pderiv[2]{}{x}$ is the Laplacian for spatial
+dimensions, and the coefficient of viscosity, $\nu$, is taken to be 1, without
+loss of generality.
+
+To the system of equations in \eqref{ns}, we add initial and final time
+boundary conditions (along the spatial dimensions, we invoke periodic boundary
+conditions).  Without loss of generality, we can take the initial conditions
+to be zero:
+
+\begin{equation}
+    u(t,x)\rvert_{t=0}, \quad x\in \bar{Q};
+    \label{nsibc}
+\end{equation}
+\begin{align}
+    u(t,x)\rvert_{x_k=-\pi} &= u(t,x)\rvert_{x_k = \pi},\nonumber\\
+    p(t,x)\rvert_{x_k=-\pi} &= p(t,x)\rvert_{x_k = \pi},
+    &k=1,2,3; \quad 0\leq t \leq a. \label{nspbc} \\
+    \left.\pderiv{u}{x_k}\right\rvert_{x_k=-\pi} &=
+    \left.\pderiv{u}{x_k}\right\rvert_{x_k = \pi},\nonumber
+\end{align}
+
+The system of equations \eqref{ns} and initial/boundary constraints
+\eqref{nsibc}, \eqref{nspbc} do not allow a unique solution to the pressure
+$p(t,x)$. For this reason, we add the constraint
+\begin{equation}
+    \int_Q p(t,x)\,dx = p_0,\ p_0 = \text{const} > 0.
+    \label{nspc}
+\end{equation}
+
+In the problem, the sought-after quantities are the vector velocity function $u
+= (u_1, u_2, u_3)$ and the scalar pressure function $p$. We will denote \emph{solution to
+the problem} as the pair $(u;p) = (u_1, u_2, u_3; p)$.
+
+We could have examined the case where, instead of $Q$, a more general domain
+is used, and instead the period boundary conditions in \eqref{nspbc}, other
+conditions are used (for example, ``sticky'' boundary conditions). We do not
+wish to complicate this work with such extensions only for technical reasons.
+All of our basic innovations and analytical technique will be demonstrated in
+this work for the case of periodic boundary conditions.
+
+Furthermore, I intend to write at least one other work devoted to the case of
+general initial/boundary problems for a system of hydrodynamic equations.
+
+\subsection{Essential symbols and definitions}
+
+With $L_2(\Omega)$, as usual, we denote the Hilbert space of Lebesgue vector
+functions $f(t,x) = (f_1(t,x), f_2(t,x), f_3(t,x)) \in R^3$ with the scalar product
+\[
+    (f,g) = \int_{\Omega} \langle f(t,x), g(t,x)\rangle\, dx dt \equiv
+    \int_0^a\left( \int_Q\langle f(t,x), g(t,x)\rangle\,dx \right)\, dt
+\]
+and the norm $\lVert f \rVert = \sqrt{ (f, f) }$. Here and throughout,
+$\langle f, g \rangle$ is the scalar product of the vectors $f$ and $g$ in the
+Euclidian space $R^3$.
+
+For the sake of the conciseness of our notation, we use the standard symbols:
+\begin{gather*}
+    \nabla = \left(\pderiv{}{x_1}, \pderiv{p}{x_2}, \pderiv{p}{x_3}\right);\ 
+    \langle u, \nabla u \rangle = \left(
+        \sum_{j=1}^3u_j\pderiv{u_1}{x_j},
+        \sum_{j=1}^3u_j\pderiv{u_2}{x_j},
+        \sum_{j=1}^3u_j\pderiv{u_3}{x_j},
+    \right);\\
+    \grad p \equiv \nabla p = \left(\pderiv{p}{x_1}, \pderiv{p}{x_2},
+    \pderiv{p}{x_3}\right).
+\end{gather*}
+
+\begin{defn}
+    Given $f\in L_2(\Omega)$, we will call the solution $(u;p) = (u_1, u_2, u_3; p)$
+    of the problem \eqref{ns} -- \eqref{nspc} \textbf{strong} if
+    \[
+        \pderiv u t, \Delta u, \langle u, \nabla \rangle u, \grad p \in L_2(\Omega).
+    \]
+\end{defn}
+
+\begin{defn}
+    We will say that the Navier-Stokes problem is \textbf{strongly solvable}
+    in $L_2(\Omega)$, if for any $f\in L_2(\Omega)$, the problem \eqref{ns} -- \eqref{nspc}
+    has a single strong solution.
+\end{defn}
+
+\section{Statement of the main result}
+
+E. Hopf's classic result \cite{hop1}, which proved that the problem \eqref{ns} -- \eqref{nspc}
+has a generalized solution satisfying the bound
+\begin{equation}
+    \sum_{k=1}^3\left( \lVert u_k(t,\cdot) \rVert^{2}_{L_2(Q)} +
+    \int_0^t \lVert \grad u_k(\eta, \cdot)\rVert ^2 _{L_2(Q)}\,d\eta \right)
+    \leq \sum_{k=1}^3\int_0^t \lVert f_k(\eta, \cdot)\rVert ^2 _{L_2(Q)}\,d\eta
+    \label{hopest}
+\end{equation}
+is well known.
+
+This estimate is arrived at easily if the $k$-th equation of the system is
+multiplied by $u_k$, and, nothing the equality $\divr u = 0$, as well as the
+initial \eqref{nsibc} and boundary $\eqref{nspbc}$ conditions, the equations are
+all integrated and summed for all $k=1,2,3$.
+
+In the case when the number of spatial variables is not less than three, the
+bound \eqref{hopest} is insufficient for perturbation theory. In my option,
+this fact in particular is one of the most important reasons why the problem
+of the strong solvability of the Navier-Stokes equations is a Millenium Prize
+problem.
+
+The main result of this paper is
+
+\begin{thm}
+    Given any $f\in L_2(\Omega)$, the problem \eqref{ns} -- \eqref{nspc} has a
+    unique strong solution $(u;p)$ and this solution satisfies the bound
+    \begin{equation}
+        \left\lVert \pderiv{u}{t} \right\rVert + \lVert \Delta u \rVert +
+        \lVert (u, \nabla)u \rVert + \lVert\grad p\rVert \leq 
+        C \left( 1 + \lVert f \rVert + \lVert f \rVert^l \right)
+        \label{soln}
+    \end{equation}
+    where $\lVert \cdot \rVert$ is the norm on $L_2(\Omega)$, and the
+    constants $C > 0$ and $l \geq 1$ do not depend on $f \in L_2(\Omega)$.
+\end{thm}
+
+This theorem presents a complete solution to the \emph{sixth Millenium Prize
+problem} about the existence and smoothness of solutions to the Navier-Stokes
+equations for an incompressible viscous fluid \cite{clay}. This result also
+enables the use of perturbation theory, and improving the smoothness of a
+solution with increasing smoothness in the problem data.
+
+We note that if the spatial dimension is greater than five, the strong
+solvability (in the sense of our definitions) would prevent the use of
+perturbation theory.
+
+In this work I have concerned myself only with the three-dimensional case.
+Therefore, I have chosen definitions convenient for me. The case when the
+spatial dimension is greater than 3 will be examined in another work, which
+will also include certain cases of general boundary conditions.
+
+\begin{thebibliography}{99}
+    \bibitem{clay} Fefferman Ch. Existence and Smoothness of the Navier-Stokes
+        equation.
+    \bibitem{lad1} Ladyzhenskaya 1.
+    \bibitem{lad2} Ladyzhenskaya 2.
+    \bibitem{lad3} Ladyzhenskaya 3.
+    \bibitem{lad4} Ladyzhenskaya 4.
+    \bibitem{tem1} Temam 1.
+    \bibitem{tem2} Temam 2.
+    \bibitem{kol1} Kolmogorov 1.
+    \bibitem{ler1} Leray 1.
+    \bibitem{ler2} Leray 2.
+    \bibitem{hop1} Hopf 1.
+    \bibitem{lio1} Lions 1.
+    \bibitem{lio2} Lions 2.
+    \bibitem{vis1} Vishik 1.
+    \bibitem{sol1} Solonnikov 1.
+    \bibitem{ote1} Otelbaev 1.
+    \bibitem{ote2} Otelbaev 2.
+    \bibitem{ote3} Otelbaev 3.
+    \bibitem{ote4} Otelbaev 4.
+    \bibitem{ote5} Otelbaev 5.
+    \bibitem{ote6} Otelbaev 6.
+    \bibitem{ote7} Otelbaev 7.
+    \bibitem{ote8} Otelbaev 8.
+    \bibitem{ote9} Otelbaev 9.
+    \bibitem{ote10} Otelbaev 10.
+    \bibitem{ote11} Otelbaev 11.
+    \bibitem{ote12} Otelbaev 12.
+    \bibitem{ote13} Otelbaev 13.
+    \bibitem{ote14} Otelbaev 14.
+    \bibitem{ote15} Otelbaev 15.
+    \bibitem{ote16} Otelbaev 16.
+    \bibitem{ote17} Otelbaev 17.
+    \bibitem{ote18} Otelbaev 18.
+    \bibitem{ote19} Otelbaev 19.
+    \bibitem{ote20} Otelbaev 20.
+    \bibitem{ote21} Otelbaev 21.
+    \bibitem{ote22} Otelbaev 22.
+    \bibitem{sol2} Solonnikov 2.
+    \bibitem{aky1} Akysh 2.
+    \bibitem{jak1} Jakupov 1.
+    \bibitem{aby1} Abylkairov 1.
+    \bibitem{aby2} Abylkairov 2.
+    \bibitem{aby3} Abylkairov 3.
+    \bibitem{aby4} Abylkairov 4.
+    \bibitem{aby5} Abylkairov 5.
+    \bibitem{ait1} Aitzhanov 1.
+    \bibitem{bai1} Baitulenov 1.
+    \bibitem{sol3} Solonnikov 3.
+    \bibitem{sak1} Saks 1.
+    \bibitem{sch1} Schmeisser 1.
+    \bibitem{ote23} Otelbaev 23.
+\end{thebibliography}
+
+
+%\appendix
+%\section{Supplementary Information}
+
+\end{document}

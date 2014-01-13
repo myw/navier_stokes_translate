@@ -1,0 +1,8 @@
+*.swp
+*.pdf
+*.dvi
+*.synctex.gz
+*.log
+*.aux
+.DS_Store
+
